@@ -1,0 +1,113 @@
+<mvc:View xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	controllerName="br.com.idxtecEquipamentos.controller.GravarEquipamento"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:f="sap.ui.layout.form">
+	<App>
+		<pages>
+			<Page showHeader="false">
+				<content>
+					<VBox class="sapUiSmallMargin">
+						<Panel headerText="{view>/titulo}">
+							<f:SimpleForm id="formEquipamento"
+								editable="true"
+								layout="ResponsiveGridLayout"
+								labelSpanXL="4"
+								labelSpanL="4"
+								labelSpanM="4"
+								labelSpanS="12"
+								adjustLabelSpan="false"
+								emptySpanXL="0"
+								emptySpanL="0"
+								emptySpanM="0"
+								emptySpanS="0"
+								columnsXL="3"
+								columnsL="2"
+								columnsM="2"
+								singleContainerFullSize="false">
+								<core:Title/>
+								<Label text="Descrição" labelFor="descricao"/>
+								<Input id="descricao" value="{model>/Descricao}" required="true"/>
+								
+								<Label text="Tipo" labelFor="tipo" required="true"/>
+									<Select id="tipo" selectedKey="{model>/Tipo}">
+										<core:Item key="IMPLEMENTO" text="IMPLEMENTO"/>
+										<core:Item key="MAQUINA" text="MÁQUINA"/>
+									</Select>
+								
+								<Label text="Número" labelFor="numero"/>
+								<Input id="numero" value="{model>/Numero}" required="true"/>
+								
+								<Label text="Número do Chassi" labelFor="numerochassi"/>
+								<Input id="numerochassi" value="{model>/NumeroChassi}"/>
+								
+								<Label text="Número de Série" labelFor="numeroserie"/>
+								<Input id="numeroserie" value="{model>/NumeroSerie}"/>
+								
+								<Label text="Valor do Equipamento" labelFor="valor"/>
+								<Input id="valor" value="{
+									path: 'model>/ValorEquipamento', 
+									type: 'sap.ui.model.odata.type.Single',
+									formatOptions: {
+										decimals: 2,
+										decimalSeparator: ','
+									}
+								}"/>
+								
+								<Label text="Ano de Fabricação" labelFor="anofabricacao"/>
+								<Input id="anofabricacao" value="{path: 'model>/AnoFabricacao', type: 'sap.ui.model.odata.type.Int32'}"/>
+								
+								<Label text="Horas de Vida Útil" labelFor="horavidautil"/>
+								<Input id="horavidautil" value="{path: 'model>/HorasVidaUtil', type: 'sap.ui.model.odata.type.Int32'}"/>
+								
+								<core:Title/>
+								<Label text="Qtd. de Horas no Ano" labelFor="qtdhorasano"/>
+								<Input id="qtdhorasano" value="{path: 'model>/QuantidadeHorasAno', type: 'sap.ui.model.odata.type.Int32'}"/>
+								
+								<Label text="Capacidade do Tanque" labelFor="capacidade"/>
+								<Input id="capacidade" value="{path: 'model>/CapacidadeTanque', type: 'sap.ui.model.odata.type.Int32'}"/>
+								
+								<Label text="Consumo - Litros/Hora" labelFor="consumolitroshora"/>
+								<Input id="consumolitroshora" value="{path: 'model>/ConsumoLitrosHora', type: 'sap.ui.model.odata.type.Int32'}"/>
+								
+								<Label text="Depreciação" labelFor="depreciacao"/>
+								<Input id="depreciacao" value="{
+									path: 'model>/TaxaDepreciacao', 
+									type: 'sap.ui.model.odata.type.Single',
+									formatOptions: {
+										decimals: 2,
+										decimalSeparator: ','
+									}
+								}"/>
+								
+								<Label text="Sucata" labelFor="sucata"/>
+								<Input id="sucata" value="{
+									path: 'model>/TaxaSucata',
+									type: 'sap.ui.model.odata.type.Single',
+									formatOptions: {
+										decimals: 2,
+										decimalSeparator: ','
+									}
+								}"/>
+								
+								<Label text="Observações" labelFor="sucata"/>
+								<TextArea id="observacoes" value="{model>/Observacoes}" rows="6"/>
+								
+								<Label text="Inativo" labelFor="inativo"/>
+								<CheckBox id="inativo" selected="{model>/Inativo}"/>
+							</f:SimpleForm> 
+						</Panel>
+					</VBox> 
+				</content>
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button text="Salvar" press="onSalvar" type="Accept"/>
+   						<Button text="Fechar" press="onVoltar" type="Reject"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
