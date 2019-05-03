@@ -103,7 +103,7 @@ sap.ui.define([
 		_getDados: function(){
 			var oJSONModel = this.getOwnerComponent().getModel("model");
 			var oDados = oJSONModel.getData();
-			
+			debugger;
 			return oDados;
 		},
 		
